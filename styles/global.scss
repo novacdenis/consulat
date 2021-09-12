@@ -1,0 +1,9 @@
+@import "normalize.css/normalize.css";
+@import "./vars.scss";
+@import "./layouts.scss";
+@import "./pages/";
+@import "./components/";
+
+body {
+  font-family: "Nunito", sans-serif;
+}
