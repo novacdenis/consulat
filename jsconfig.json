@@ -4,7 +4,11 @@
     "paths": {
       "@/layouts/*": ["layouts/*"],
       "@/components/*": ["components/*"],
-      "@/utils/*": ["utils/*"]
+      "@/utils/*": ["utils/*"],
+      "@/images/*": ["assets/images/*"],
+      "@/icons/*": ["assets/icons*"],
+      "@/services/*": ["services/*"],
+      "@/actions/*": ["store/actions/*"]
     }
   }
 }

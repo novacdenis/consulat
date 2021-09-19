@@ -1,6 +1,21 @@
-.auth-card {
+.auth-content {
   background-color: #fff;
-  padding: 20px 30px;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-on-dark);
+  width: 480px;
+  max-width: calc(100vw - 10px - 10px);
+  margin: 0 auto;
+  padding-top: 56px;
+  .auth-card {
+    padding: 0 50px 70px;
+    &.login {
+      padding-bottom: 40px;
+    }
+  }
+  .auth-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
 }

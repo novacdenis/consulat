@@ -9,8 +9,11 @@
   --secondary-text-color: #8e8d8d;
   --main-text-color: #3c4852;
   --border-color: #E6E6E6;
+  --border-error: #FBB6BD;
+  --input-background-error: #FFFCFC;
 
   // Others
-  --border-radius: 6px;
+  --border-radius: 8px;
   --shadow-on-dark: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  --transition: 0.2s ease-in;
 }

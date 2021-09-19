@@ -4,6 +4,86 @@
 @import "./pages/";
 @import "./components/";
 
+* {
+  box-sizing: border-box;
+  &::after,
+  &::before {
+    box-sizing: content-box;
+  }
+}
+
 body {
   font-family: "Nunito", sans-serif;
+}
+
+.svg-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.nested-link {
+  width: 100%;
+  text-decoration: none;
+}
+
+.co-divider {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 24px 0;
+  &::after,
+  &::before {
+    content: "";
+    top: 50%;
+    transform: translateX(-50%);
+    height: 2px;
+    background-color: #e0dede;
+    position: absolute;
+    width: 50%;
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    left: 100%;
+  }
+}
+
+.link {
+  color: var(--main-text-color);
+  text-decoration: none;
+  transition: var(--transition);
+  font-weight: 500;
+  position: relative;
+  display: inline-block;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background-color: #000;
+    transition: var(--transition);
+    opacity: 0;
+  }
+  &:hover {
+    color: #000;
+    &::after {
+      opacity: 1;
+      width: 100%;
+    }
+  }
 }

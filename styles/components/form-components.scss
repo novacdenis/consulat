@@ -1,0 +1,53 @@
+.co-form {
+  .form-control {
+    margin-bottom: 24px;
+  }
+}
+
+.form-control {
+  position: relative;
+  label {
+    display: block;
+    margin-bottom: 4px;
+    padding-left: 4px;
+    font-size: 15px;
+  }
+
+  &.invalid {
+    .co-input {
+      border-color: var(--border-error);
+      background-color: var(--input-background-error);
+    }
+  }
+
+  &_errors {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 0 3px;
+    font-size: 13px;
+    color: var(--red-color);
+    z-index: 5;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+  }
+}
+
+.co-input {
+  padding: 12px 14px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  outline: none;
+  transition: var(--transition);
+  transition-property: border-color;
+  width: 100%;
+  position: relative;
+  z-index: 9;
+}
+
+.co-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}

@@ -1,29 +1,41 @@
+import Link from "next/link";
+import { useDispatch } from "react-redux";
 import AuthLayout from "@/layouts/auth.layout";
-import { Form, FormItem, Input } from "@/components/form";
+import Form from "@/components/form";
+import Input from "@/components/input";
+import Button from "@/components/button";
+import { authLoginSchema } from "@/services/validation/schemas";
+import { createNotification } from "@/actions/notificationsAction";
 
 export default function Login() {
-  const onFinish = () => null;
+  const dispatch = useDispatch();
+  const onFinish = () => {
+    createNotification()
+  };
 
   return (
-    <div className="auth-card">
-      <Form onFinish={onFinish}>
-        <FormItem
-          name="test"
-          label="Test"
-          rules={[
-            {
-              required: true,
-              message: " ceva",
-            },
-            {
-              minLength: 4,
-              message: " min4",
-            },
-          ]}
-        >
-          <Input />
-        </FormItem>
+    <div className="auth-card login">
+      <Form onFinish={onFinish} validationSchema={authLoginSchema}>
+        <Form.Item name="email">
+          <Input placeholder="Email" type="email" />
+        </Form.Item>
+        <Form.Item name="password">
+          <Input placeholder="Пароль" type="password" />
+        </Form.Item>
+        <Button.Group>
+          <Button htmlType="submit">Войти</Button>
+          <Link href="/auth/register" passHref dontClone>
+            <a className="nested-link">
+              <Button type="outline">Регистрация</Button>
+            </a>
+          </Link>
+        </Button.Group>
       </Form>
+      <div className="d-flex justify-content-center">
+        <Link href="/auth/reset">
+          <a className="pt-4 link">Забыли пароль?</a>
+        </Link>
+      </div>
     </div>
   );
 }

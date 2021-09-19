@@ -1,34 +1,29 @@
 import PropTypes from "prop-types";
 import React, { useCallback } from "react";
 import { Controller } from "react-hook-form";
-import ControllerErrors from "./controllerErrors.component";
-import controllerErrorsHandler from "@/utils/controllerRulesHandler";
+import Errors from "./errors.component";
+import _cs from "@/utils/condStrings";
 
 export default function FormItem(props) {
-  const { name, control, children, label, initialValues, rules } = props;
+  const { name, control, children, label, initialValues, controlClassName } = props;
 
   const render = useCallback(
     ({ field, fieldState: { error }, formState: { isSubmitted } }) => {
       return (
-        <div className="form-control">
-          <label htmlFor={name}>{label}</label>
+        <div className={_cs("form-control", controlClassName, (error && "invalid") || "")}>
+          {!!label && <label htmlFor={name}>{label}</label>}
           {React.cloneElement(children, { field })}
-          <ControllerErrors
-            isSubmitted={isSubmitted}
-            error={error}
-            messages={controllerErrorsHandler.getMessages(rules)}
-          />
+          <Errors isSubmitted={isSubmitted} error={error} />
         </div>
       );
     },
-    [children, label, name, rules]
+    [children, controlClassName, label, name]
   );
 
   return (
     <Controller
       defaultValue={initialValues?.[name] || ""}
       control={control}
-      rules={{ ...controllerErrorsHandler.getRules(rules) }}
       name={name}
       render={render}
     />
@@ -37,21 +32,13 @@ export default function FormItem(props) {
 
 FormItem.propTypes = {
   control: PropTypes.object,
-  errors: PropTypes.object,
   name: PropTypes.string.isRequired,
   children: PropTypes.node,
   label: PropTypes.string,
   initialValues: PropTypes.object,
-  rules: PropTypes.arrayOf(
-    PropTypes.oneOfType([
-      PropTypes.shape({
-        required: PropTypes.bool,
-        message: PropTypes.string,
-      }),
-      PropTypes.shape({
-        minLength: PropTypes.number,
-        message: PropTypes.string,
-      }),
-    ])
-  ),
+  controlClassName: PropTypes.arrayOf(PropTypes.string),
+};
+
+FormItem.defaultProps = {
+  controlClassName: [],
 };
