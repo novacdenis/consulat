@@ -16,5 +16,5 @@ export const authRegisterSchema = object({
   email: string().email().required(),
   phone: string().required(),
   password: string().min(6).required(),
-  confirm_password: string().oneOf([ref("password"), null], "Пароли не совпадают"),
+  confirm_password: string().oneOf([ref("password"), null], "Пароли не совпадают").required(),
 });

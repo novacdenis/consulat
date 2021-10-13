@@ -6,7 +6,7 @@
       "@/components/*": ["components/*"],
       "@/utils/*": ["utils/*"],
       "@/images/*": ["assets/images/*"],
-      "@/icons/*": ["assets/icons*"],
+      "@/icons/*": ["assets/icons/*"],
       "@/services/*": ["services/*"],
       "@/actions/*": ["store/actions/*"]
     }

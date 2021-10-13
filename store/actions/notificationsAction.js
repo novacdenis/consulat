@@ -1,25 +1,16 @@
 import { NOTIFICATIONS_PUSH, NOTIFICATIONS_REMOVE } from "store/actionTypes";
 
-export const deleteNotification = (notificationUID) => (dispatch) =>
-  new Promise((resolve, reject) => {
-    try {
-      dispatch({ type: NOTIFICATIONS_REMOVE, payload: notificationUID });
-      return resolve();
-    } catch (error) {
-      return reject(error);
-    }
-  });
-
 /**
  * @param {String} config.title
  * @param {String} config.content
+ * @param {String} [config.pos=rightLeft]
  * @param {String} config.type
- * @param {Number} config.duration
+ * @param {Number} [config.timeout=5000]
  *
  * @returns {Promise} Notification UID
  */
 export const createNotification =
-  ({ title, content, type, duration = 5000 }) =>
+  ({ title, content, type, pos = "rightLeft", timeout = 5000 }) =>
   (dispatch) =>
     new Promise((resolve, reject) => {
       try {
@@ -32,7 +23,8 @@ export const createNotification =
             title,
             content,
             type,
-            duration,
+            pos,
+            timeout,
           },
         });
         return resolve(id);
@@ -40,3 +32,13 @@ export const createNotification =
         return reject(error);
       }
     });
+
+export const removeNotification = (id, pos) => (dispatch) =>
+  new Promise((resolve, reject) => {
+    try {
+      dispatch({ type: NOTIFICATIONS_REMOVE, payload: { id, pos } });
+      return resolve();
+    } catch (error) {
+      return reject(error);
+    }
+  });

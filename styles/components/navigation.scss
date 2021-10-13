@@ -1,0 +1,28 @@
+.navigation-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 55px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 18px;
+  text-decoration: none;
+  color: var(--main-text-color);
+  &:hover {
+    color: var(--main-text-hover);
+  }
+  &.nav-link-b {
+    font-weight: 600;
+  }
+}

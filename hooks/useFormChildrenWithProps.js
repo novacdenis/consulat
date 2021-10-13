@@ -1,21 +1,30 @@
 import React from "react";
+import Link from "next/link";
+import FormItem from "@/components/Form/formItem";
 
-export default function useFormChildrenWithProps(props) {
-  const passProps = (children) =>
-    React.Children.map(children, (child) => {
-      if (child.props?.name) {
-        return React.cloneElement(child, props);
-      }
-      if (child.props?.children && !child.props?.dontClone) {
-        return React.cloneElement(child, { children: passProps(child.props?.children) });
+const useFormChildrenWithProps = (props) => {
+  const types = [(<FormItem />).type.toString()];
+  const nextOnlyOneChildren = [(<Link />).type.toString()];
+
+  const passProps = (children) => {
+    return React.Children.map(children, (child) => {
+      if (nextOnlyOneChildren.includes(child.type?.toString()) || typeof child.type === "string") {
+        return React.Children.only(child);
       }
 
-      if (child.props?.dontClone) {
-        return React.Children.only(child)
-      }
-      
-      return child;
+      return React.isValidElement(child)
+        ? types.includes(child.type.toString())
+          ? React.cloneElement(child, { ...props })
+          : child.props?.children
+          ? React.cloneElement(child, {
+              children: passProps(child.props?.children),
+            })
+          : child
+        : child;
     });
+  };
 
   return passProps;
-}
+};
+
+export default useFormChildrenWithProps;

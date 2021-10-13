@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { useDispatch } from "react-redux";
 import AuthLayout from "@/layouts/auth.layout";
 import Form from "@/components/form";
 import Input from "@/components/input";
@@ -8,9 +7,8 @@ import { authLoginSchema } from "@/services/validation/schemas";
 import { createNotification } from "@/actions/notificationsAction";
 
 export default function Login() {
-  const dispatch = useDispatch();
   const onFinish = () => {
-    createNotification()
+    createNotification();
   };
 
   return (
@@ -24,7 +22,7 @@ export default function Login() {
         </Form.Item>
         <Button.Group>
           <Button htmlType="submit">Войти</Button>
-          <Link href="/auth/register" passHref dontClone>
+          <Link href="/auth/register" passHref>
             <a className="nested-link">
               <Button type="outline">Регистрация</Button>
             </a>

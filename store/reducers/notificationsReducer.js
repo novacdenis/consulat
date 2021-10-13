@@ -1,7 +1,10 @@
-import { NOTIFICATIONS_PUSH } from "store/actionTypes";
+import { NOTIFICATIONS_PUSH, NOTIFICATIONS_REMOVE } from "store/actionTypes";
 
 const initialState = {
-  payload: [],
+  topLeft: [],
+  topRight: [],
+  bottomLeft: [],
+  bottomRight: [],
 };
 
 const notifications = (state = initialState, action = {}) => {
@@ -10,6 +13,13 @@ const notifications = (state = initialState, action = {}) => {
       return {
         ...state,
         payload: [...state.payload, action.payload],
+      };
+    case NOTIFICATIONS_REMOVE:
+      return {
+        ...state,
+        [action.payload.pos]: state[action.payload.pos].filter(
+          (ntf) => ntf.id !== action.payload.id
+        ),
       };
     default:
       return state;

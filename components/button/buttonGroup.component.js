@@ -14,7 +14,11 @@ export default function ButtonGroup({ children, gap }) {
 }
 
 ButtonGroup.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)]),
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+  ]),
   gap: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 

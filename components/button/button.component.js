@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import ButtonGroup from "./buttonGroup.component";
+import ButtonIcon from "./buttonIcon.component";
 import _cs from "@/utils/condStrings";
 
 export default function Button(props) {
-  const { htmlType, type, btnClassName, disabled, loading, children, onClick } = props;
+  const { htmlType, type, btnClassName, disabled, loading, children, onClick, icon } = props;
   const [typeClassName, setTypeClassName] = useState("");
   const className = _cs("co-btn", typeClassName);
+
 
   useEffect(() => {
     if (type === "primary") {
@@ -56,6 +58,7 @@ export default function Button(props) {
         </motion.span>
       )}
       <span>{children}</span>
+      {icon && <span className="icon">{icon}</span>}
     </button>
   );
 }
@@ -66,14 +69,22 @@ Button.propTypes = {
   btnClassName: PropTypes.arrayOf(PropTypes.string),
   disabled: PropTypes.bool,
   loading: PropTypes.bool,
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.arrayOf(PropTypes.string),
+  ]),
   onClick: PropTypes.func,
+  icon: PropTypes.element,
 };
 
 Button.defaultProps = {
   htmlType: "button",
   type: "primary",
   btnClassName: [],
+  icon: null,
 };
 
 Button.Group = ButtonGroup;
+Button.Icon = ButtonIcon;
