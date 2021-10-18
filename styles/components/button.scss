@@ -15,7 +15,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
   gap: 6px;
+  height: 100%;
   &:disabled,
   &[data-loading="true"] {
     opacity: 0.65;
@@ -24,7 +26,14 @@
   }
   .icon {
     margin-left: 8px;
+    svg {
+      width: 16px;
+    }
   }
+}
+
+.co-btn.readOnly {
+  pointer-events: none;
 }
 
 .co-btn-icon {
@@ -94,11 +103,19 @@
   border-color: var(--accent-color);
   &:hover,
   &:focus {
-    background-color: lighten(#ffcc80, 20);
+    background-color: rgba(#ffcc80, 0.15);
   }
   &:active {
-    background-color: lighten(#ffcc80, 15);
+    background-color: rgba(#ffcc80, 0.20);
     transform: scale(0.98);
+  }
+}
+
+.co-btn.co-btn-sm {
+  line-height: 30px;
+  padding: 0 16px;
+  .icon svg {
+    width: 14px;
   }
 }
 

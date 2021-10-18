@@ -6,10 +6,20 @@ import ButtonIcon from "./buttonIcon.component";
 import _cs from "@/utils/condStrings";
 
 export default function Button(props) {
-  const { htmlType, type, btnClassName, disabled, loading, children, onClick, icon } = props;
+  const {
+    htmlType,
+    type,
+    btnClassName,
+    disabled,
+    loading,
+    children,
+    onClick,
+    icon,
+    readOnly,
+    size,
+  } = props;
   const [typeClassName, setTypeClassName] = useState("");
-  const className = _cs("co-btn", typeClassName);
-
+  const className = _cs("co-btn", btnClassName);
 
   useEffect(() => {
     if (type === "primary") {
@@ -23,7 +33,7 @@ export default function Button(props) {
 
   return (
     <button
-      className={_cs(className, typeClassName)}
+      className={_cs(className, typeClassName, `co-btn-${size}`, readOnly && "readOnly")}
       data-loading={loading}
       type={htmlType}
       disabled={disabled}
@@ -66,7 +76,8 @@ export default function Button(props) {
 Button.propTypes = {
   htmlType: PropTypes.string,
   type: PropTypes.oneOf(["primary", "outline"]),
-  btnClassName: PropTypes.arrayOf(PropTypes.string),
+  size: PropTypes.oneOf(["sm", "md", "xl"]),
+  btnClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   disabled: PropTypes.bool,
   loading: PropTypes.bool,
   children: PropTypes.oneOfType([
@@ -77,13 +88,16 @@ Button.propTypes = {
   ]),
   onClick: PropTypes.func,
   icon: PropTypes.element,
+  readOnly: PropTypes.bool,
 };
 
 Button.defaultProps = {
   htmlType: "button",
   type: "primary",
+  size: "md",
   btnClassName: [],
   icon: null,
+  readOnly: false,
 };
 
 Button.Group = ButtonGroup;

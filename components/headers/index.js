@@ -1,3 +1,4 @@
 import Header from "./header.component";
+import OnlineHeader from "./onlineHeader.component";
 
-export { Header };
+export { Header, OnlineHeader };

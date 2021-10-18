@@ -26,3 +26,76 @@
     font-weight: 600;
   }
 }
+
+.online-navigation {
+  height: 100px;
+  .navigation-inner {
+    justify-content: center;
+    height: inherit;
+  }
+  .co-logo {
+    margin-right: 30px;
+  }
+  .co-btn.nav {
+    color: #fff;
+    border-width: 1px;
+    border-color: #e7e7e7;
+    font-weight: 400;
+  }
+  .nav-bar {
+    gap: 0;
+    height: 100%;
+  }
+  .nav-item {
+    display: grid;
+    place-items: center;
+    padding: 0 20px;
+    height: 100%;
+    border-left: 1px solid rgba(#fff, 0.1);
+    &:last-of-type {
+      border-right: 1px solid rgba(#fff, 0.1);
+    }
+  }
+  .nav-link {
+    color: #e0e0e0;
+    &:hover {
+      color: #fff;
+    }
+  }
+  .navigation-actions {
+    margin-left: 30px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  .account-info {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    color: #fff;
+    svg {
+      min-width: 24px;
+      margin-right: 14px;
+    }
+    .text {
+      margin-right: 10px;
+    }
+  }
+  .account-quick-actions {
+    .accout-actions {
+      margin-top: 10px;
+    }
+  }
+  .navigation-avatar {
+    padding: 0;
+    margin: 0;
+    overflow: 0;
+    border: 0;
+    &:active,
+    &:hover,
+    &:focus {
+      background-color: transparent;
+    }
+  }
+}
