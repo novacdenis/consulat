@@ -1,15 +1,15 @@
 import Link from "next/link";
 import AuthLayout from "@/layouts/auth.layout";
-import Form from "@/components/form";
-import Input from "@/components/input";
-import Button from "@/components/button";
+import Form from "@/components/Form";
+import Input from "@/components/Input";
+import Button from "@/components/Button";
 import { authRegisterSchema } from "@/services/validation/schemas";
 export default function Register() {
   const onFinish = () => null;
 
   return (
     <div className="auth-card">
-      <Form onFinish={onFinish} validationSchema={authRegisterSchema}>
+      <Form onFinish={onFinish} schema={authRegisterSchema}>
         <Input.Group>
           <Form.Item name="first_name">
             <Input placeholder="Имя" />

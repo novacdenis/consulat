@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import PropsTypes from "prop-types";
 import { AnimatePresence, motion } from "framer-motion";
-import Button from "../button";
+import Button from "../Button";
 import TimesIcon from "../../assets/icons/times.svg";
 import CheckIcon from "../../assets/icons/check-circle.svg";
 import TimesCIcon from "../../assets/icons/times-circle.svg";

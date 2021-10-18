@@ -1,9 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import FormItem from "@/components/Form/formItem";
+import FormList from "@/components/Form/formList";
 
 const useFormChildrenWithProps = (props) => {
-  const types = [(<FormItem />).type.toString()];
+  const types = [(<FormItem />).type.toString(), (<FormList />).type.toString()];
   const nextOnlyOneChildren = [(<Link />).type.toString()];
 
   const passProps = (children) => {

@@ -32,6 +32,11 @@
     text-overflow: ellipsis;
     overflow: hidden;
     width: 100%;
+
+    .error-item {
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
   }
 }
 

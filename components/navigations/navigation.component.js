@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
-import Button from "../button";
+import Button from "../Button";
 import Logo from "@/images/logo.svg";
 import Discussion from "@/icons/discussion.svg";
 import UserIcon from "@/icons/user.svg";

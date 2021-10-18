@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import Notification from "@/components/notification";
+import Notification from "@/components/Notification";
 
 export default function NotificationsProvider() {
   const { notifications } = useSelector((state) => ({

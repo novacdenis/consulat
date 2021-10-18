@@ -1,15 +1,15 @@
 import PropTypes from "prop-types";
-import Container from "@/components/container";
+import Container from "@/components/Container";
 import HeaderP1 from "@/images/main/header1.svg";
 import HeaderP2 from "@/images/main/header2.svg";
 import HeaderP3 from "@/images/main/header3.svg";
-import classNames from "@/utils/classNames";
+import _cs from "@/utils/condStrings";
 
 export default function Header(props) {
   const { className, navigation } = props;
 
   return (
-    <header className={classNames("main-header", className)}>
+    <header className={_cs("main-header", className)}>
       <div className="header-decoration p1">
         <HeaderP1 />
       </div>

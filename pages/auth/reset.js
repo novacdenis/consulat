@@ -1,8 +1,8 @@
 import Link from "next/link";
 import AuthLayout from "@/layouts/auth.layout";
-import Form from "@/components/form";
-import Input from "@/components/input";
-import Button from "@/components/button";
+import Form from "@/components/Form";
+import Input from "@/components/Input";
+import Button from "@/components/Button";
 import { authResetSchema } from "@/services/validation/schemas";
 
 export default function Reset() {

@@ -1,35 +1,27 @@
-import PropTypes from 'prop-types';
-import { cloneElement, useCallback } from 'react';
-import { Controller } from 'react-hook-form';
-import classNames from '../../utils/classNames';
-import Error from './errorItem.component';
+import PropTypes from "prop-types";
+import { cloneElement, useCallback } from "react";
+import { Controller } from "react-hook-form";
+import Errors from "./errorsList";
+import _cs from "@/utils/condStrings";
 
 export default function FormItem(props) {
   const { name, control, label, children, className } = props;
 
   const formControl = useCallback(
-    ({
-      field,
-      fieldState: { error, invalid },
-      formState: { isSubmitted, isSubmitting },
-    }) => (
-      <div
-        className={classNames(
-          className,
-          'form-control',
-          !!invalid && 'invalid',
-        )}
-      >
-        {!!label && (
-          <label className="form-control-label" htmlFor={name}>
-            {label}
-          </label>
-        )}
-        {cloneElement(children, { field, isSubmitting })}
-        <Error error={error} isFormSubmitted={isSubmitted} />
-      </div>
-    ),
-    [children, className, label, name],
+    ({ field, fieldState: { error, invalid }, formState: { isSubmitted, isSubmitting } }) => {
+      return (
+        <div className={_cs(className, "form-control", !!invalid && "invalid")}>
+          {!!label && (
+            <label className="form-control-label" htmlFor={name}>
+              {label}
+            </label>
+          )}
+          {cloneElement(children, { field, isSubmitting })}
+          <Errors error={error} isFormSubmitted={isSubmitted} />
+        </div>
+      );
+    },
+    [children, className, label, name]
   );
 
   return <Controller control={control} name={name} render={formControl} />;

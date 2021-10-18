@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import { Navigation } from "@/components/navigations";
-import { Header } from "@/components/headers";
+import { Navigation } from "@/components/Navigations";
+import { Header } from "@/components/Headers";
 
 export default function MainLayout({ children }) {
   return (

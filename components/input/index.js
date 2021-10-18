@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
-import classNames from "../../utils/classNames";
+import InputGroup from "./inputGroup";
+import _cs from "@/utils/condStrings";
 
 export default function Input(props) {
   const { className, field, isSubmitting, prefix, placeholder, disabled } = props;
@@ -9,8 +10,9 @@ export default function Input(props) {
       {!!prefix && <span className="co-input_prefix">{prefix}</span>}
       <input
         {...field}
+        value={field.value ?? ""}
         id={field.name}
-        className={classNames(className, "co-input", !!prefix && "with-prefix")}
+        className={_cs(className, "co-input", !!prefix && "with-prefix")}
         disabled={isSubmitting || disabled}
         placeholder={placeholder}
         type="text"
@@ -27,3 +29,5 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   disabled: PropTypes.bool,
 };
+
+Input.Group = InputGroup;

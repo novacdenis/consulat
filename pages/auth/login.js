@@ -1,8 +1,8 @@
 import Link from "next/link";
 import AuthLayout from "@/layouts/auth.layout";
-import Form from "@/components/form";
-import Input from "@/components/input";
-import Button from "@/components/button";
+import Form from "@/components/Form";
+import Input from "@/components/Input";
+import Button from "@/components/Button";
 import { authLoginSchema } from "@/services/validation/schemas";
 import { createNotification } from "@/actions/notificationsAction";
 
@@ -13,7 +13,7 @@ export default function Login() {
 
   return (
     <div className="auth-card login">
-      <Form onFinish={onFinish} validationSchema={authLoginSchema}>
+      <Form onFinish={onFinish} schema={authLoginSchema}>
         <Form.Item name="email">
           <Input placeholder="Email" type="email" />
         </Form.Item>
